@@ -22,7 +22,7 @@
     </key>
 
     <key type="s" name="menu-button-extensions-app">
-      <default>"org.gnome.Extensions.desktop"</default>
+      <default>"com.mattjakeman.ExtensionManager"</default>
       <summary>Preffered Extensions app</summary>
       <description>Change to preffered Extensions app.</description>
     </key>
