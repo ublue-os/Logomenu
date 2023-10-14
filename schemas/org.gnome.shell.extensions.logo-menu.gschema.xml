@@ -4,7 +4,7 @@
   <schema path="/org/gnome/shell/extensions/Logo-menu/" id="org.gnome.shell.extensions.logo-menu">
 
     <key type="i" name="menu-button-icon-image">
-      <default>0</default>
+      <default>1</default>
       <summary>Menu Button Icon Image</summary>
       <description>Change the Menu Button Icon Image.</description>
     </key>
