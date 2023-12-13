@@ -57,8 +57,8 @@ export const LogoMenuIconsPage = GObject.registerClass(class LogoMenuIconsWidget
         symbolicIconsFlowBox.connect('child-activated', () => {
             const selectedChild = symbolicIconsFlowBox.get_selected_children();
             const selectedChildIndex = selectedChild[0].get_index();
-            this._settings.set_int('menu-button-icon-image', selectedChildIndex);
             this._settings.set_boolean('symbolic-icon', true);
+            this._settings.set_int('menu-button-icon-image', selectedChildIndex);
         });
         Constants.SymbolicDistroIcons.forEach(icon => {
             let iconName = icon.PATH.replace('/Resources/', '');
@@ -262,6 +262,24 @@ export const LogoMenuOptionsPage = GObject.registerClass(class LogoMenuOptionsWi
 
         softwareCentreRow.add_suffix(changeSoftwareCenterInput);
 
+        // Change System Monitor and build it's option in prefs
+
+        const systemMonitorRow = new Adw.ActionRow({
+            title: _('System Monitor'),
+        });
+        const currentSystemMonitor = this._settings.get_string('menu-button-system-monitor');
+
+        const changeSystemMonitorInput = new Gtk.Entry({
+            valign: Gtk.Align.CENTER,
+        });
+
+        changeSystemMonitorInput.set_text(currentSystemMonitor);
+        changeSystemMonitorInput.connect('changed', () => {
+            this._settings.set_string('menu-button-system-monitor', changeSystemMonitorInput.get_text());
+        });
+
+        systemMonitorRow.add_suffix(changeSystemMonitorInput);
+
 
         // Power Options
         const showPowerOptionsRow = new Adw.ActionRow({
@@ -342,12 +360,29 @@ export const LogoMenuOptionsPage = GObject.registerClass(class LogoMenuOptionsWi
         });
 
         activitiesButtonVisiblityRow.add_suffix(activitiesButtonVisiblitySwitch);
+        
+         // Icon Shadow Visibility
+        const iconShadowVisibilityRow = new Adw.ActionRow({
+            title: _('Hide Icon Shadow'),
+        });
+
+        const iconShadowRowVisiblitySwitch = new Gtk.Switch({
+            valign: Gtk.Align.CENTER,
+            active: this._settings.get_boolean('hide-icon-shadow'),
+        });
+
+        iconShadowRowVisiblitySwitch.connect('notify::active', widget => {
+            this._settings.set_boolean('hide-icon-shadow', widget.get_active());
+        });
+
+        iconShadowVisibilityRow.add_suffix(iconShadowRowVisiblitySwitch);
 
         // Pref Group
         prefGroup1.add(menuButtonIconClickTypeRow);
         prefGroup1.add(extensionsAppRow);
         prefGroup1.add(menuButtonTerminalRow);
         prefGroup1.add(softwareCentreRow);
+        prefGroup1.add(systemMonitorRow);
 
         prefGroup2.add(showPowerOptionsRow);
         prefGroup2.add(forceQuitOptionrow);
@@ -355,6 +390,7 @@ export const LogoMenuOptionsPage = GObject.registerClass(class LogoMenuOptionsWi
         prefGroup2.add(softwareCentreOptionRow);
 
         prefGroup3.add(activitiesButtonVisiblityRow);
+        prefGroup3.add(iconShadowVisibilityRow);
 
         this.add(prefGroup1);
         this.add(prefGroup2);
@@ -362,7 +398,7 @@ export const LogoMenuOptionsPage = GObject.registerClass(class LogoMenuOptionsWi
     }
 });
 
-// Parts taken from Arc Menu - https://gitlab.com/logoMenu/logoMenu/-/blob/wip-GNOME42-AwdPrefs/prefs.js
+// Parts taken from Arc Menu
 // Create the About page
 export const AboutPage = GObject.registerClass(class LogoMenuAboutPage extends Adw.PreferencesPage {
     _init(metadata) {
@@ -371,6 +407,9 @@ export const AboutPage = GObject.registerClass(class LogoMenuAboutPage extends A
             icon_name: 'info-symbolic',
         });
 
+        const PROJECT_IMAGE = 'settings-logo-menu-logo';
+        const EXTERNAL_LINK_ICON = 'adw-external-link-symbolic'
+
         const logoMenuLogoGroup = new Adw.PreferencesGroup();
         const logoMenuBox = new Gtk.Box({
             orientation: Gtk.Orientation.VERTICAL,
@@ -378,6 +417,12 @@ export const AboutPage = GObject.registerClass(class LogoMenuAboutPage extends A
             margin_bottom: 10,
             hexpand: false,
             vexpand: false,
+        });
+
+        const projectImage = new Gtk.Image({
+            margin_bottom: 15,
+            icon_name: PROJECT_IMAGE,
+            pixel_size: 100,
         });
 
         const logoMenuLabel = new Gtk.Label({
@@ -393,6 +438,7 @@ export const AboutPage = GObject.registerClass(class LogoMenuAboutPage extends A
             vexpand: false,
             margin_bottom: 5,
         });
+        logoMenuBox.append(projectImage);
         logoMenuBox.append(logoMenuLabel);
         logoMenuBox.append(projectDescriptionLabel);
         logoMenuLogoGroup.add(logoMenuBox);
@@ -406,8 +452,8 @@ export const AboutPage = GObject.registerClass(class LogoMenuAboutPage extends A
             title: _('Logo Menu Version'),
         });
         let releaseVersion;
-        if (metadata.version)
-            releaseVersion = metadata.version;
+        if (metadata['version-name'])
+            releaseVersion = metadata['version-name'];
         else
             releaseVersion = 'unknown';
         logoMenuVersionRow.add_suffix(new Gtk.Label({
@@ -421,13 +467,6 @@ export const AboutPage = GObject.registerClass(class LogoMenuAboutPage extends A
             label: `${Config.PACKAGE_VERSION.toString()}`,
         }));
 
-        const githubLinkRow = new Adw.ActionRow({
-            title: _('Github'),
-        });
-        githubLinkRow.add_suffix(new Gtk.Label({
-            label: 'Github.com/Aryan20/LogoMenu',
-        }));
-
         const createdByRow = new Adw.ActionRow({
             title: _('Created with love by'),
         });
@@ -438,15 +477,33 @@ export const AboutPage = GObject.registerClass(class LogoMenuAboutPage extends A
         const matrixRoomRow = new Adw.ActionRow({
             title: _('Matrix/Element room'),
         });
-        matrixRoomRow.add_suffix(new Gtk.Label({
-            label: '#logo-menu:matrix.org',
+        matrixRoomRow.add_suffix(new Gtk.LinkButton({
+            icon_name: EXTERNAL_LINK_ICON,
+            uri: 'https://matrix.to/#/#logo-menu:matrix.org',
+        }));
+
+        const githubLinkRow = new Adw.ActionRow({
+            title: 'GitHub',
+        });
+        githubLinkRow.add_suffix(new Gtk.LinkButton({
+            icon_name: EXTERNAL_LINK_ICON,
+            uri: 'https://github.com/Aryan20/LogoMenu',
+        }));
+
+        const contributorRow = new Adw.ActionRow({
+            title: _('Contributors'),
+        });
+        contributorRow.add_suffix(new Gtk.LinkButton({
+            icon_name: EXTERNAL_LINK_ICON,
+            uri: 'https://github.com/Aryan20/Logomenu/graphs/contributors'
         }));
 
         extensionInfoGroup.add(logoMenuVersionRow);
         extensionInfoGroup.add(gnomeVersionRow);
-        extensionInfoGroup.add(githubLinkRow);
         extensionInfoGroup.add(createdByRow);
+        extensionInfoGroup.add(githubLinkRow);
         extensionInfoGroup.add(matrixRoomRow);
+        extensionInfoGroup.add(contributorRow);
 
         this.add(extensionInfoGroup);
         // -----------------------------------------------------------------------

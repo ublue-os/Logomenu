@@ -10,6 +10,7 @@ import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 import * as Util from 'resource:///org/gnome/shell/misc/util.js';
 
 import * as Constants from './constants.js';
+import * as Selection from './selection.js';
 
 import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 
@@ -30,12 +31,15 @@ class LogoMenuMenuButton extends PanelMenu.Button {
 
         // Icon
         this.icon = new St.Icon({
-            style_class: 'menu-button',
+           style_class: 'menu-button',
         });
+        
+        this._settings.connectObject('changed::hide-icon-shadow', () => this.hideIconShadow(), this);
         this._settings.connectObject('changed::menu-button-icon-image', () => this.setIconImage(), this);
         this._settings.connectObject('changed::symbolic-icon', () => this.setIconImage(), this);
         this._settings.connectObject('changed::menu-button-icon-size', () => this.setIconSize(), this);
-
+	
+	this.hideIconShadow()
         this.setIconImage();
         this.setIconSize();
         this.add_child(this.icon);
@@ -74,6 +78,7 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         if (showSoftwareCenter)
             this._addItem(new MenuItem(_('Software Center...'), () => this._openSoftwareCenter()));
 
+        this._addItem(new MenuItem(_('System Monitor'), () => this._openSystemMonitor()));
         this._addItem(new MenuItem(_('Terminal'), () => this._openTerminal()));
         this._addItem(new MenuItem(_('Extensions'), () => this._openExtensionsApp()));
 
@@ -151,7 +156,7 @@ class LogoMenuMenuButton extends PanelMenu.Button {
     }
 
     _forceQuit() {
-        Util.spawn(['xkill']);
+        new Selection.SelectionWindow();
     }
 
     _openTerminal() {
@@ -164,6 +169,10 @@ class LogoMenuMenuButton extends PanelMenu.Button {
 
     _openSoftwareCenter() {
         Util.trySpawnCommandLine(this._settings.get_string('menu-button-software-center'));
+    }
+
+    _openSystemMonitor() {
+        Util.trySpawnCommandLine(this._settings.get_string('menu-button-system-monitor'));
     }
 
     _openExtensionsApp() {
@@ -188,12 +197,27 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         const isSymbolic = this._settings.get_boolean('symbolic-icon');
         let isStartHereSymbolic = false;
         let iconPath;
+        let notFound = false;
         
-        if(isSymbolic) {
-            isStartHereSymbolic = Constants.SymbolicDistroIcons[iconIndex].PATH === 'start-here-symbolic';
-            iconPath = this._extension.path + Constants.SymbolicDistroIcons[iconIndex].PATH;
+        if (isSymbolic) {
+            if (Constants.SymbolicDistroIcons[iconIndex] !== undefined) {
+                isStartHereSymbolic = Constants.SymbolicDistroIcons[iconIndex].PATH === 'start-here-symbolic';
+                iconPath = this._extension.path + Constants.SymbolicDistroIcons[iconIndex].PATH;
+            } else {
+                notFound = true;
+            }
         } else {
-            iconPath = this._extension.path + Constants.ColouredDistroIcons[iconIndex].PATH;
+            if (Constants.ColouredDistroIcons[iconIndex] !== undefined) {
+                iconPath = this._extension.path + Constants.ColouredDistroIcons[iconIndex].PATH;
+            } else {
+                notFound = true;
+            }
+        }
+        
+        if(notFound) {
+            iconPath = 'start-here-symbolic';
+            this._settings.set_boolean('symbolic-icon', true);
+            this._settings.set_int('menu-button-icon-image', 0);
         }
 
         const fileExists = GLib.file_test(iconPath, GLib.FileTest.IS_REGULAR);
@@ -206,6 +230,16 @@ class LogoMenuMenuButton extends PanelMenu.Button {
     setIconSize() {
         const iconSize = this._settings.get_int('menu-button-icon-size');
         this.icon.icon_size = iconSize;
+    }
+    
+    hideIconShadow() {
+    	const iconShadow = this._settings.get_boolean('hide-icon-shadow');
+    	
+        if(!iconShadow){
+            this.icon.add_style_class_name('system-status-icon'); 
+        } else {
+            this.icon.remove_style_class_name('system-status-icon');
+        }
     }
 });
 
