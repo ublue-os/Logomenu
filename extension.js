@@ -72,7 +72,6 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         this._addItem(new PopupMenu.PopupSeparatorMenuItem());
         this._addItem(new MenuItem(_('Activities'), () => this._overviewToggle()));
         this._addItem(new MenuItem(_('App Grid'), () => this._showAppGrid()));
-        this._addItem(new MenuItem(_('Mission Center'), () => this._openMissionCenter()));
         this._addItem(new PopupMenu.PopupSeparatorMenuItem());
 
         if (showSoftwareCenter)
@@ -161,10 +160,6 @@ class LogoMenuMenuButton extends PanelMenu.Button {
 
     _openTerminal() {
         Util.trySpawnCommandLine(this._settings.get_string('menu-button-terminal'));
-    }
-
-    _openMissionCenter() {
-        Util.spawn(['flatpak', 'run', 'io.missioncenter.MissionCenter']);
     }
 
     _openSoftwareCenter() {

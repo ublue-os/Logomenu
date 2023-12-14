@@ -4,7 +4,7 @@
   <schema path="/org/gnome/shell/extensions/Logo-menu/" id="org.gnome.shell.extensions.logo-menu">
 
     <key type="i" name="menu-button-icon-image">
-      <default>1</default>
+      <default>0</default>
       <summary>Menu Button Icon Image</summary>
       <description>Change the Menu Button Icon Image.</description>
     </key>
@@ -22,7 +22,7 @@
     </key>
 
     <key type="s" name="menu-button-extensions-app">
-      <default>"com.mattjakeman.ExtensionManager.desktop"</default>
+      <default>"com.mattjakeman.ExtensionManager"</default>
       <summary>Preffered Extensions app</summary>
       <description>Change to preffered Extensions app.</description>
     </key>
