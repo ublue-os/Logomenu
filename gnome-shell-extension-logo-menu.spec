@@ -9,6 +9,7 @@ Group:         User Interface/Desktops
 License:       GPLv2
 URL:           https://github.com/ublue-os/Logomenu
 Source0:       %{url}/archive/refs/heads/main.tar.gz
+Source1:       %{url}/archive/refs/heads/gnome-44.tar.gz
 BuildArch:     noarch
 
 BuildRequires: make
@@ -21,7 +22,11 @@ Requires:    gnome-shell >= 3.12
 Quick access menu for the GNOME panel with options that help ease the workflow for newcomers and power users alike. 
 
 %prep
-%autosetup -n Logomenu-main
+%if 0%{?fedora} == 38
+%setup -b 1 -n Logomenu-gnome-44
+%else
+%setup -n Logomenu-main
+%endif
 
 %install
 make build
