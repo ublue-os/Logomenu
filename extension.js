@@ -49,7 +49,7 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         // Menu
         this._settings.connectObject('changed::hide-softwarecentre', () => this._displayMenuItems(), this);
         this._settings.connectObject('changed::show-power-options', () => this._displayMenuItems(), this);
-        this._settings.connectObject('changed::show-pods', () => this._displayMenuItems(), this);
+        this._settings.connectObject('changed::show-boxbuddy', () => this._displayMenuItems(), this);
         this._settings.connectObject('changed::hide-forcequit', () => this._displayMenuItems(), this);
         this._settings.connectObject('changed::show-lockscreen', () => this._displayMenuItems(), this);
         this._settings.connectObject('changed::show-activities-button', () => this._displayMenuItems(), this);
@@ -65,7 +65,7 @@ class LogoMenuMenuButton extends PanelMenu.Button {
 
     _displayMenuItems() {
         const showPowerOptions = this._settings.get_boolean('show-power-options');
-        const showPods = this._settings.get_boolean('show-pods');
+        const showBoxBuddy = this._settings.get_boolean('show-boxbuddy');
         const showForceQuit = !this._settings.get_boolean('hide-forcequit');
         const showLockScreen = this._settings.get_boolean('show-lockscreen');
         const showSoftwareCenter = !this._settings.get_boolean('hide-softwarecentre');
@@ -88,8 +88,8 @@ class LogoMenuMenuButton extends PanelMenu.Button {
 
         this._addItem(new MenuItem(_('System Monitor'), () => this._openSystemMonitor()));
         this._addItem(new MenuItem(_('Terminal'), () => this._openTerminal()));
-        if (showPods)
-            this._addItem(new MenuItem(_('Containers'), () => this._openPods()));
+        if (showBoxBuddy)
+            this._addItem(new MenuItem(_('Containers'), () => this._openBoxBuddy()));
 
         this._addItem(new MenuItem(_('Extensions'), () => this._openExtensionsApp()));
 
@@ -174,8 +174,8 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         Util.trySpawnCommandLine(this._settings.get_string('menu-button-terminal'));
     }
 
-    _openPods() {
-        Util.trySpawnCommandLine('flatpak run com.github.marhkb.Pods');
+    _openBoxBuddy() {
+        Util.trySpawnCommandLine('flatpak run io.github.dvlv.boxbuddyrs');
     }
 
     _openSoftwareCenter() {
