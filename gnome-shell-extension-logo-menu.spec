@@ -12,7 +12,6 @@ Source0:       %{url}/archive/refs/heads/main.tar.gz
 Source1:       %{url}/archive/refs/heads/gnome-44.tar.gz
 BuildArch:     noarch
 
-BuildRequires: make
 BuildRequires: unzip
 BuildRequires: gettext
 BuildRequires: gnome-shell
@@ -30,9 +29,8 @@ Quick access menu for the GNOME panel with options that help ease the workflow f
 %endif
 
 %install
-make build
 mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}
-unzip logomenu@aryan_k.shell-extension.zip -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}
+mv po PrefsLib Resources schemas *.js *.json *.css %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}
 glib-compile-schemas %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}/schemas/
 
 %files
