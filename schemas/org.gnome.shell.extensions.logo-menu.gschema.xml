@@ -57,6 +57,12 @@
       <description>Path to the custom icon image file.</description>
     </key>
 
+    <key type="b" name="show-boxbuddy">
+      <default>false</default>
+      <summary>Toggle BoxBuddy option visibility</summary>
+      <description>Toggle BoxBuddy option visibility.</description>
+    </key>
+
     <key type="b" name="hide-forcequit">
       <default>false</default>
       <summary>Toggle Force Quit option visibility</summary>
