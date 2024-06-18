@@ -2,15 +2,15 @@
 # Copyright (C) 2022 Aryan Kaushik (Aryan20)
 # This file is distributed under the same license as the Logo Menu package.
 # FIRST AUTHOR Artem Kozlov <satisataka@gmail.com>, 2022.
-# SECOND AUTHOR a1exak <a1.kamaev@yandex.ru>, 2023
+# SECOND AUTHOR a1exak <a1exak@outlook.com>, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Logo Menu 18\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-14 15:03+0530\n"
-"PO-Revision-Date: 2022-11-17 23:23+0530\n"
-"Last-Translator: a1exak <a1.kamaev@yandex.ru>\n"
+"POT-Creation-Date: 2024-06-17 21:10+0530\n"
+"PO-Revision-Date: 2022-06-17 21:10+0530\n"
+"Last-Translator: a1exak <a1exak@outlook.com>\n"
 "Language-Team: <>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -19,55 +19,55 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: extension.js:74
+#: extension.js:75
 msgid "About My System"
 msgstr "О cистеме"
 
-#: extension.js:79
+#: extension.js:80
 msgid "Activities"
 msgstr "Обзор"
 
-#: extension.js:81
+#: extension.js:82
 msgid "App Grid"
 msgstr "Приложения"
 
-#: extension.js:85
+#: extension.js:86
 msgid "Software Center..."
 msgstr "Центр приложений..."
 
-#: extension.js:87 PrefsLib/adw.js:332
+#: extension.js:88 PrefsLib/adw.js:332
 msgid "System Monitor"
 msgstr "Системный монитор"
 
-#: extension.js:88 PrefsLib/adw.js:294
+#: extension.js:89 PrefsLib/adw.js:294
 msgid "Terminal"
 msgstr "Терминал"
 
-#: extension.js:89
+#: extension.js:90
 msgid "Extensions"
 msgstr "Расширения"
 
-#: extension.js:93
+#: extension.js:94
 msgid "Force Quit App"
 msgstr "Принудительно закрыть приложение"
 
-#: extension.js:98
+#: extension.js:99
 msgid "Sleep"
 msgstr "Сон"
 
-#: extension.js:99
+#: extension.js:100
 msgid "Restart..."
 msgstr "Перезагрузка..."
 
-#: extension.js:100
+#: extension.js:101
 msgid "Shut Down..."
 msgstr "Завершение работы..."
 
-#: extension.js:104 extension.js:109
+#: extension.js:105 extension.js:110
 msgid "Lock Screen"
 msgstr "Заблокировать экран"
 
-#: extension.js:106
+#: extension.js:107
 msgid "Log Out..."
 msgstr "Завершить сеанс..."
 
@@ -85,19 +85,19 @@ msgstr "Настройка Значков"
 
 #: PrefsLib/adw.js:123
 msgid "Icon Size"
-msgstr "Размер"
+msgstr "Размер значка"
 
 #: PrefsLib/adw.js:156
 msgid "Use Custom Icon"
-msgstr ""
+msgstr "Собственный значок"
 
 #: PrefsLib/adw.js:170
 msgid "Selected Icon"
-msgstr ""
+msgstr "Выбранный значок"
 
 #: PrefsLib/adw.js:195
 msgid "Select a Custom Icon"
-msgstr ""
+msgstr "Выберите значок"
 
 #: PrefsLib/adw.js:238
 msgid "Change Defaults"
@@ -133,7 +133,7 @@ msgstr "Приложение Расширений"
 
 #: PrefsLib/adw.js:281
 msgid "GNOME Extensions"
-msgstr "Расширения"
+msgstr "Расширения GNOME"
 
 #: PrefsLib/adw.js:282
 msgid "Extensions Manager"
@@ -160,54 +160,53 @@ msgid "Hide Software Centre option"
 msgstr "Скрыть Центр приложений"
 
 #: PrefsLib/adw.js:414
-#, fuzzy
 msgid "Show Activities Button"
-msgstr "Обзор"
+msgstr "Показать кнопку «Обзор»"
 
 #: PrefsLib/adw.js:430
 msgid "Hide Icon Shadow"
 msgstr "Скрыть тень значка"
 
-#: PrefsLib/adw.js:470
+#: PrefsLib/adw.js:471 PrefsLib/adw.js:476
 msgid "About"
 msgstr "О расширении"
 
-#: PrefsLib/adw.js:493
-msgid "Logo Menu"
-msgstr "Logo Menu"
-
 #: PrefsLib/adw.js:500
+msgid "Logo Menu"
+msgstr ""
+
+#: PrefsLib/adw.js:507
 msgid "Quick access menu for GNOME"
 msgstr "Меню быстрого доступа для GNOME"
 
-#: PrefsLib/adw.js:517
+#: PrefsLib/adw.js:524
 msgid "Logo Menu Version"
 msgstr "Версия Logo Menu"
 
-#: PrefsLib/adw.js:529
+#: PrefsLib/adw.js:536
 msgid "GNOME Version"
 msgstr "Версия GNOME"
 
-#: PrefsLib/adw.js:536
+#: PrefsLib/adw.js:543
 msgid "Created with love by"
 msgstr "Создано с любовью"
 
-#: PrefsLib/adw.js:543
+#: PrefsLib/adw.js:550
 msgid "Matrix/Element room"
 msgstr "Комната Matrix/Element"
 
-#: PrefsLib/adw.js:559
+#: PrefsLib/adw.js:566
 msgid "Contributors"
-msgstr ""
+msgstr "Авторы"
 
-#: PrefsLib/adw.js:576
+#: PrefsLib/adw.js:583
 msgid "This program comes with absolutely no warranty."
 msgstr "Эта программа поставляется без каких-либо гарантий."
 
-#: PrefsLib/adw.js:577
+#: PrefsLib/adw.js:584
 #, javascript-format
 msgid "See the %sGNU General Public License, version 2 or later%s for details."
-msgstr ""
+msgstr "Подробнее смотрите %sGNU General Public License, версии 2 или новее%s."
 
 #~ msgid "Github"
 #~ msgstr "Github"
