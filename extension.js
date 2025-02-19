@@ -87,12 +87,11 @@ class LogoMenuMenuButton extends PanelMenu.Button {
             this._addItem(new MenuItem(_('Software Center'), () => this._openSoftwareCenter()));
         this._addItem(new PopupMenu.PopupSeparatorMenuItem());
 
+        this._addItem(new MenuItem(_('Extensions'), () => this._openExtensionsApp()));
         this._addItem(new MenuItem(_('System Monitor'), () => this._openSystemMonitor()));
         this._addItem(new MenuItem(_('Terminal'), () => this._openTerminal()));
         if (showBoxBuddy)
             this._addItem(new MenuItem(_('Containers'), () => this._openBoxBuddy()));
-
-        this._addItem(new MenuItem(_('Extensions'), () => this._openExtensionsApp()));
 
         if (showForceQuit) {
             this._addItem(new PopupMenu.PopupSeparatorMenuItem());
