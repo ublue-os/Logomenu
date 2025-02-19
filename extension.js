@@ -75,6 +75,7 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         this.menu.removeAll();
 
         this._addItem(new MenuItem(_('About My System'), () => this._aboutThisDistro()));
+        this._addItem(new MenuItem(_('Documentation'), () => this._documentation()));
         this._addItem(new PopupMenu.PopupSeparatorMenuItem());
 
         this._addItem(new MenuItem(_('System Settings...'), () => this._systemPreferences()));
@@ -135,6 +136,10 @@ class LogoMenuMenuButton extends PanelMenu.Button {
 
     _systemPreferences() {
         Util.spawn(['gnome-control-center']);
+    }
+
+    _documentation() {
+        Util.trySpawnCommandLine('xdg-open https://docs.projectbluefin.io/')
     }
 
     _overviewToggle() {
