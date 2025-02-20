@@ -75,24 +75,26 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         this.menu.removeAll();
 
         this._addItem(new MenuItem(_('About My System'), () => this._aboutThisDistro()));
-        // this._addItem(new MenuItem(_('System Settings...'), () => this._systemPreferences()));
+        this._addItem(new MenuItem(_('Documentation'), () => this._documentation()));
         this._addItem(new PopupMenu.PopupSeparatorMenuItem());
+
+        this._addItem(new MenuItem(_('System Settings...'), () => this._systemPreferences()));
 
         if (!showActivitiesButton)
             this._addItem(new MenuItem(_('Activities'), () => this._overviewToggle()));
 
-        this._addItem(new MenuItem(_('App Grid'), () => this._showAppGrid()));
+        // this._addItem(new MenuItem(_('App Grid'), () => this._showAppGrid()));
+        if (showSoftwareCenter)
+            this._addItem(new MenuItem(_('Software Center'), () => this._openSoftwareCenter()));
         this._addItem(new PopupMenu.PopupSeparatorMenuItem());
 
-        if (showSoftwareCenter)
-            this._addItem(new MenuItem(_('Software Center...'), () => this._openSoftwareCenter()));
-
+        this._addItem(new MenuItem(_('Extensions'), () => this._openExtensionsApp()));
         this._addItem(new MenuItem(_('System Monitor'), () => this._openSystemMonitor()));
         this._addItem(new MenuItem(_('Terminal'), () => this._openTerminal()));
+        this._addItem(new PopupMenu.PopupSeparatorMenuItem());
+
         if (showBoxBuddy)
             this._addItem(new MenuItem(_('Containers'), () => this._openBoxBuddy()));
-
-        this._addItem(new MenuItem(_('Extensions'), () => this._openExtensionsApp()));
 
         if (showForceQuit) {
             this._addItem(new PopupMenu.PopupSeparatorMenuItem());
@@ -136,6 +138,10 @@ class LogoMenuMenuButton extends PanelMenu.Button {
 
     _systemPreferences() {
         Util.spawn(['gnome-control-center']);
+    }
+
+    _documentation() {
+        Util.trySpawnCommandLine('xdg-open https://docs.projectbluefin.io/')
     }
 
     _overviewToggle() {

@@ -1,207 +1,204 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2023 Aryan Kaushik (Aryan20)
+# Copyright (C) 2025 Aryan Kaushik (Aryan20)
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FIRST AUTHOR Serhii Chebanenko <serhiichebanenko@yahoo.com>, 2025.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Logo Menu 22.2\n"
+"Project-Id-Version: Logo Menu 34\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-19 01:47+0530\n"
-"PO-Revision-Date: 2024-04-26 18:45+2\n"
-"Last-Translator: Karel Mašek <masekkarel@vivaldi.net>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: cs\n"
+"PO-Revision-Date: 2025-02-05 16:35+0200\n"
+"Last-Translator: 4e6anenk0 <serhiichebanenko@yahoo.com>\n"
+"Language-Team: \n"
+"Language: uk_UA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: extension.js:75
 msgid "About My System"
-msgstr "Nastavení"
+msgstr "Про систему"
 
 #: extension.js:80
 msgid "Activities"
-msgstr "Aktivity"
+msgstr "Діяльність"
 
 #: extension.js:82
 msgid "App Grid"
-msgstr "Aplikace"
+msgstr "Програми"
 
 #: extension.js:86 PrefsLib/adw.js:314
 msgid "Software Center"
-msgstr "Software"
+msgstr "Центр програм"
 
 #: extension.js:88 PrefsLib/adw.js:332
 msgid "System Monitor"
-msgstr "Sledování systému"
+msgstr "Системний монітор"
 
 #: extension.js:89 PrefsLib/adw.js:294
 msgid "Terminal"
-msgstr "Terminál"
+msgstr "Термінал"
 
 #: extension.js:90
 msgid "Extensions"
-msgstr "Rozšíření"
+msgstr "Розширення"
 
 #: extension.js:94
 msgid "Force Quit App"
-msgstr "Vynutit ukončení aplikace"
+msgstr "Примусово закрити програму"
 
 #: extension.js:99
 msgid "Sleep"
-msgstr "Uspat do paměti"
+msgstr "Сон"
 
 #: extension.js:100
 msgid "Restart..."
-msgstr "Restartovat..."
+msgstr "Перезапуск..."
 
 #: extension.js:101
 msgid "Shut Down..."
-msgstr "Vypnout..."
+msgstr "Вимкнути..."
 
 #: extension.js:105 extension.js:110
 msgid "Lock Screen"
-msgstr "Uzamknout"
+msgstr "Заблокувати екран"
 
 #: extension.js:107
 msgid "Log Out..."
-msgstr "Odhlásit se..."
+msgstr "Вийти..."
 
 #: PrefsLib/adw.js:41
 msgid "Symbolic Icons"
-msgstr "Jednobarevné ikony"
+msgstr "Символічні піктограми"
 
 #: PrefsLib/adw.js:45
 msgid "Coloured Icons"
-msgstr "Barevné ikony"
+msgstr "Кольорові піктограми"
 
 #: PrefsLib/adw.js:49
 msgid "Icon Settings"
-msgstr "Nastavení ikon"
+msgstr "Налаштування піктограми"
 
 #: PrefsLib/adw.js:123
 msgid "Icon Size"
-msgstr "Velikost ikon"
+msgstr "Розмір піктограми"
 
 #: PrefsLib/adw.js:156
 msgid "Use Custom Icon"
-msgstr "Použít výchozí ikony"
+msgstr "Власна піктограма"
 
 #: PrefsLib/adw.js:170
 msgid "Selected Icon"
-msgstr "Vybraná ikona"
+msgstr "Вибрана піктограма"
 
 #: PrefsLib/adw.js:195
 msgid "Select a Custom Icon"
-msgstr "Zvolit vlastní tlačítko"
+msgstr "Вибрати власну піктограму"
 
 #: PrefsLib/adw.js:238
 msgid "Change Defaults"
-msgstr "Změnit výchozí"
+msgstr "Змінити типові параметри"
 
 #: PrefsLib/adw.js:242
 msgid "Show/Hide Options"
-msgstr "Zobrazit/Skrýt možnosti"
+msgstr "Показати/Приховати параметри"
 
 #: PrefsLib/adw.js:246
 msgid "Top Panel Options"
-msgstr "Možnosti panelu"
+msgstr "Параметри верхньої панелі"
 
 #: PrefsLib/adw.js:254
 msgid "Icon Click Type to open Activities"
-msgstr "Tlačítko myši zobrazí aktivity:"
+msgstr "Тип кліку миші для огляду Діяльності"
 
 #: PrefsLib/adw.js:260
 msgid "Left Click "
-msgstr "Levé tlačítko"
+msgstr "Лівий клік "
 
 #: PrefsLib/adw.js:261
 msgid "Middle Click "
-msgstr "Prostřední tlačítko"
+msgstr "Клік коліщатком "
 
 #: PrefsLib/adw.js:262
 msgid "Right Click "
-msgstr "Pravé tlačítko"
+msgstr "Правий клік "
 
 #: PrefsLib/adw.js:275
 msgid "Preferred Extensions Application"
-msgstr "Výchozí správce rozšíření"
+msgstr "Програма для розширень"
 
 #: PrefsLib/adw.js:281
 msgid "GNOME Extensions"
-msgstr "GNOME Rozšíření"
+msgstr "Розширення GNOME"
 
 #: PrefsLib/adw.js:282
 msgid "Extensions Manager"
-msgstr "Správce rozšíření"
+msgstr "Менеджер розширень"
 
 #: PrefsLib/adw.js:350
 msgid "Enable Power Options"
-msgstr "Zobrazit možnosti napájení"
+msgstr "Показувати параметри вимкнення"
 
 #: PrefsLib/adw.js:365
 msgid "Hide Force Quit option"
-msgstr "Skrýt Vynutit ukončení"
+msgstr "Приховати примусове закриття"
 
 #: PrefsLib/adw.js:382
 msgid "Show Lock Screen option"
-msgstr "Zobrazovat tlačítko Uzamknout"
+msgstr "Показувати параметри блокування екрану"
 
 #: PrefsLib/adw.js:398
 msgid "Hide Software Centre option"
-msgstr "Nezobrazovat Software"
+msgstr "Приховати Центр Програм"
 
 #: PrefsLib/adw.js:414
 msgid "Show Activities Button"
-msgstr "Tlačítko Zobrazit aktivity"
+msgstr "Показувати кнопку Діяльність"
 
 #: PrefsLib/adw.js:430
 msgid "Hide Icon Shadow"
-msgstr "Skrýt stín ikony"
+msgstr "Приховати тінь піктограми"
 
 #: PrefsLib/adw.js:471 PrefsLib/adw.js:476
 msgid "About"
-msgstr "Info:"
+msgstr "Подробиці"
 
 #: PrefsLib/adw.js:500
 msgid "Logo Menu"
-msgstr "Logo Menu"
+msgstr ""
 
 #: PrefsLib/adw.js:507
 msgid "Quick access menu for GNOME"
-msgstr "Rychlý přístup pro GNOME"
+msgstr "Меню швидкого доступу для GNOME"
 
 #: PrefsLib/adw.js:524
 msgid "Logo Menu Version"
-msgstr "Verze Logo Menu"
+msgstr "Версія Logo Menu"
 
 #: PrefsLib/adw.js:536
 msgid "GNOME Version"
-msgstr "Verze GNOME"
+msgstr "Версія GNOME"
 
 #: PrefsLib/adw.js:543
 msgid "Created with love by"
-msgstr "Vytvořil s láskou:"
+msgstr "Зроблено з любов'ю"
 
 #: PrefsLib/adw.js:550
 msgid "Matrix/Element room"
-msgstr "Místnost Matrix/Element"
+msgstr "Кімната Matrix/Element"
 
 #: PrefsLib/adw.js:566
 msgid "Contributors"
-msgstr "Přispěvatelé"
+msgstr "Учасники"
 
 #: PrefsLib/adw.js:583
 msgid "This program comes with absolutely no warranty."
-msgstr "Na tento program se nevztahuje žádná záruka."
+msgstr "Ця програма постачається без жодних гарантій."
 
 #: PrefsLib/adw.js:584
 #, javascript-format
 msgid "See the %sGNU General Public License, version 2 or later%s for details."
-msgstr ""
-"Tento software spadá pod %sGNU General Public License, version 2 or later%s."
-
-#~ msgid "Software Center..."
-#~ msgstr "Software..."
+msgstr "Докладніше дивіться %sGNU General Public License, версії 2 або новіше%s."
