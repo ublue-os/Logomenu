@@ -22,6 +22,14 @@ msgstr ""
 msgid "About My System"
 msgstr "Informazioni sul sistema"
 
+#: extension.js:78
+msgid "Documentation"
+msgstr "Documentazione"
+
+#: extension.js:81
+msgid "System Settings.."
+msgstr "Impostazioni di sistema..."
+
 #: extension.js:80
 msgid "Activities"
 msgstr "Attività"
@@ -41,6 +49,10 @@ msgstr "Monitor di sistema"
 #: extension.js:89 PrefsLib/adw.js:294
 msgid "Terminal"
 msgstr "Terminale"
+
+#: extension.js:87
+msgid "Containers"
+msgstr "Container"
 
 #: extension.js:90
 msgid "Extensions"
