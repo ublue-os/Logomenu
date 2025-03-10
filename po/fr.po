@@ -21,6 +21,14 @@ msgstr ""
 msgid "About My System"
 msgstr "À propos de mon système"
 
+#: extension.js:78
+msgid "Documentation"
+msgstr "Documentation"
+
+#: extension.js:81
+msgid "System Settings..."
+msgstr "Réglages Système..."
+
 #: extension.js:80
 msgid "Activities"
 msgstr "Activités"
