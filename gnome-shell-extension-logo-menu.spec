@@ -1,7 +1,7 @@
 %global uuid logomenu@aryan_k
 
 Name:          gnome-shell-extension-logo-menu
-Version:       {{{ git_dir_version }}}
+Version:       1.{{{ git_dir_version }}}
 Release:       1%{?dist}
 Summary:       Quick access menu for the GNOME panel
 
