@@ -29,6 +29,8 @@ Quick access menu for the GNOME panel with options that help ease the workflow f
 %endif
 
 %install
+mkdir -p %{buildroot}%{_bindir}
+mv distroshelf-helper %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}
 mv po PrefsLib Resources schemas *.js *.json *.css %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}
 glib-compile-schemas %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}/schemas/
@@ -36,6 +38,7 @@ glib-compile-schemas %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}/sche
 %files
 %license LICENSE
 %{_datadir}/gnome-shell/extensions/%{uuid}/
+%{_bindir}/distroshelf-helper
 
 %changelog
 {{{ git_dir_changelog }}}

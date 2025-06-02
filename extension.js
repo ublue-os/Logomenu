@@ -50,7 +50,7 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         // Menu
         this._settings.connectObject('changed::hide-softwarecentre', () => this._displayMenuItems(), this);
         this._settings.connectObject('changed::show-power-options', () => this._displayMenuItems(), this);
-        this._settings.connectObject('changed::show-boxbuddy', () => this._displayMenuItems(), this);
+        this._settings.connectObject('changed::show-distroshelf', () => this._displayMenuItems(), this);
         this._settings.connectObject('changed::hide-forcequit', () => this._displayMenuItems(), this);
         this._settings.connectObject('changed::show-lockscreen', () => this._displayMenuItems(), this);
         this._settings.connectObject('changed::show-activities-button', () => this._displayMenuItems(), this);
@@ -66,7 +66,7 @@ class LogoMenuMenuButton extends PanelMenu.Button {
 
     _displayMenuItems() {
         const showPowerOptions = this._settings.get_boolean('show-power-options');
-        const showBoxBuddy = this._settings.get_boolean('show-boxbuddy');
+        const showDistroShelf = this._settings.get_boolean('show-distroshelf');
         const showForceQuit = !this._settings.get_boolean('hide-forcequit');
         const showLockScreen = this._settings.get_boolean('show-lockscreen');
         const showSoftwareCenter = !this._settings.get_boolean('hide-softwarecentre');
@@ -94,8 +94,8 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         this._addItem(new MenuItem(_('Terminal'), () => this._openTerminal()));
         this._addItem(new PopupMenu.PopupSeparatorMenuItem());
 
-        if (showBoxBuddy)
-            this._addItem(new MenuItem(_('Containers'), () => this._openBoxBuddy()));
+        if (showDistroShelf)
+            this._addItem(new MenuItem(_('Containers'), () => this._openDistroShelf()));
 
         if (showForceQuit) {
             this._addItem(new PopupMenu.PopupSeparatorMenuItem());
@@ -187,8 +187,8 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         Util.trySpawnCommandLine(this._settings.get_string('menu-button-terminal'));
     }
 
-    _openBoxBuddy() {
-        Util.trySpawnCommandLine('flatpak run io.github.dvlv.boxbuddyrs');
+    _openDistroShelf() {
+        Util.trySpawnCommandLine('/usr/bin/distroshelf-helper');
     }
 
     _openSoftwareCenter() {
