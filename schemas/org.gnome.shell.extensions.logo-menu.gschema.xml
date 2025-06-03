@@ -57,10 +57,10 @@
       <description>Path to the custom icon image file.</description>
     </key>
 
-    <key type="b" name="show-boxbuddy">
+    <key type="b" name="show-distroshelf">
       <default>false</default>
-      <summary>Toggle BoxBuddy option visibility</summary>
-      <description>Toggle BoxBuddy option visibility.</description>
+      <summary>Toggle DistroShelf option visibility</summary>
+      <description>Toggle DistroShelf option visibility.</description>
     </key>
 
     <key type="b" name="hide-forcequit">
@@ -101,7 +101,7 @@
     </key>
 
     <key type="s" name="menu-button-system-monitor">
-      <default>"gnome-system-monitor"</default>
+      <default>"/usr/bin/missioncenter-helper"</default>
       <summary>Menu System Monitor</summary>
       <description>Change the Menu System Monitor.</description>
     </key>
