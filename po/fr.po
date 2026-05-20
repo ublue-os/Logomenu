@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Logo Menu 18\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-19 01:47+0530\n"
-"PO-Revision-Date: 2025-04-22 21:27+0200\n"
+"PO-Revision-Date: 2025-04-22 21:45+0200\n"
 "Last-Translator: Léane GRASSER <leane.grasser@proton.me>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -27,7 +27,7 @@ msgstr "Documentation"
 
 #: extension.js:81
 msgid "System Settings..."
-msgstr "Réglages Système..."
+msgstr "Paramètres du système..."
 
 #: extension.js:80
 msgid "Activities"
