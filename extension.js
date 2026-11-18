@@ -1,3 +1,4 @@
+import Clutter from 'gi://Clutter';
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
@@ -56,9 +57,15 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         this._settings.connectObject('changed::show-activities-button', () => this._displayMenuItems(), this);
         this._displayMenuItems();
 
-        // bind middle click option to toggle overview
-        this.connect('button-press-event', this._buttonPressEvent.bind(this));
-        this.connect('destroy', () => { this._settings = null; });
+        // Disable the parent's ClickGesture (GNOME 50+) so pointer events reach vfunc_event
+        this._clickGesture?.set_enabled(false);
+
+        this.connect('destroy', () => {
+            // Don't leave a force quit grab behind if we're disabled mid-selection (e.g. screen lock)
+            this._selection?.stop();
+            this._selection = null;
+            this._settings = null;
+        });
     }
 
     _addItem(item) {
@@ -120,22 +127,26 @@ class LogoMenuMenuButton extends PanelMenu.Button {
         }
     }
 
-    _buttonPressEvent(actor, event) {
-        // left click === 1, middle click === 2, right click === 3
-        const clickType = this._settings.get_int('menu-button-icon-click-type');
-        if (event.get_button() === clickType) {
-            this.menu.close();
-            Main.overview.toggle();
+    vfunc_event(event) {
+        if (event.type() === Clutter.EventType.BUTTON_PRESS) {
+            // left click === 1, middle click === 2, right click === 3
+            const clickType = this._settings.get_int('menu-button-icon-click-type');
+            if (event.get_button() === clickType) {
+                this.menu.close();
+                Main.overview.toggle();
+            } else {
+                this.menu?.toggle();
+            }
+            return Clutter.EVENT_STOP;
+        } else if (event.type() === Clutter.EventType.TOUCH_BEGIN) {
+            this.menu?.toggle();
+            return Clutter.EVENT_STOP;
         }
+        return super.vfunc_event(event);
     }
 
     _aboutThisDistro() {
-        const gnomeMajorVersion = parseInt(Config.PACKAGE_VERSION.toString().split('.')[0]);
-        if (gnomeMajorVersion >= 46) {
-            Util.spawn(['gnome-control-center', 'system', 'about']);
-        } else {
-            Util.spawn(['gnome-control-center', 'info-overview']);
-        }
+        Util.spawn(['gnome-control-center', 'system', 'about']);
     }
 
     _systemPreferences() {
@@ -181,7 +192,9 @@ class LogoMenuMenuButton extends PanelMenu.Button {
     }
 
     _forceQuit() {
-        new Selection.SelectionWindow();
+        this._selection?.stop();
+        this._selection = new Selection.SelectionWindow();
+        this._selection.connect('stop', () => { this._selection = null; });
     }
 
     _openTerminal() {
