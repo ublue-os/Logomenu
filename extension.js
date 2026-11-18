@@ -142,7 +142,10 @@ class LogoMenuMenuButton extends PanelMenu.Button {
             this.menu?.toggle();
             return Clutter.EVENT_STOP;
         }
-        return super.vfunc_event(event);
+        // StWidget has no event vfunc for GJS to chain up to, so calling
+        // super.vfunc_event() logs "Virtual function not implemented" on
+        // every hover. Let Clutter handle other events as it normally would.
+        return Clutter.EVENT_PROPAGATE;
     }
 
     _aboutThisDistro() {
